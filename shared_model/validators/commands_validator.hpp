@@ -101,7 +101,7 @@ namespace shared_model {
         ReasonsGroupType operator()(
             const detail::PolymorphicWrapper<interface::CreateAsset> &ca)
             const {
-          std::string class_name = "CreateAccount";
+          std::string class_name = "CreateAsset";
           ReasonsGroupType res;
 
           validateAssetName(res, ca->assetName());
@@ -118,6 +118,7 @@ namespace shared_model {
           ReasonsGroupType res;
 
           validateDomainId(res, cd->domainId());
+          validateRoleId(res, cd->userDefaultRole());
 
           return res;
         }
@@ -139,6 +140,7 @@ namespace shared_model {
           ReasonsGroupType res;
 
           validateAccountId(res, gp->accountId());
+          validatePermission(res, gp->permissionName());
 
           return res;
         }
@@ -179,7 +181,7 @@ namespace shared_model {
         ReasonsGroupType operator()(
             const detail::PolymorphicWrapper<interface::TransferAsset> &ta)
             const {
-          std::string class_name = "SetQuorum";
+          std::string class_name = "TransferAsset";
           ReasonsGroupType res;
 
           validateAccountId(res, ta->srcAccountId());
